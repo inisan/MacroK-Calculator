@@ -71,6 +71,7 @@ function calculate() {
     }
 
     // For macros
+    
     if (result3 > 0) {
         let prts = W * 1.6;
         let fts = W * 0.8;
