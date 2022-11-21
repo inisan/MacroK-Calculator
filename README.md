@@ -1,11 +1,13 @@
 # MACRO-K
 
+### Website: https://inisan.github.io/MacroK-Calculator/
+
 ### Description:
 MACRO-K is a nutrition tool, a BMR / TDEE calculator that also evaluates your personal recommended daily intake of the 3 main macronutrients.
 
-As a calculator, this project is a static webpage, consisting of an:
+As a calculator, this project consists of an:
 
-- index.html file that includes all the information presented in the webpage, which means:
+- index.html file that includes all the information displayed, which means:
     - the calculator itself;
     - general information about nutrition that explains useful things to better understand the concepts and what the calculator does;
     - a table with the 3 main macronutrients;
