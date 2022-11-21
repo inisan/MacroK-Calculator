@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href='https://fonts.googleapis.com/css?family=Righteous' rel='stylesheet'>
+    <link href="style.css" rel="stylesheet">
+    <title>Macro-K</title>
+</head>
+
+<body>
+    <div class="giga container-fluid">
+        <header>
+            MACRO-K
+            <p class="intro">MACRO-K is a BMR / TDEE calculator that also evaluates your ideal daily intake of the 3
+                main macronutrients !</p>
+        </header>
+        <main>
+            <div class="mega container-fluid">
+                <div class="left conatiner-fluid">
+                    <h1 class="def">Calculator - Mifflin St. Jeor formula¹</h1>
+                    <table class="sp1">
+                        <tr>
+                            <td>Weight:</td>
+                            <td><input id="wgt" type="number" autocomplete="off" placeholder="kg" min="0"></td>
+                        </tr>
+                        <tr>
+                            <td>Height:</td>
+                            <td><input id="hgt" type="number" autocomplete="off" placeholder="cm" min="0"></td>
+                        </tr>
+                        <tr>
+                            <td>Age:</td>
+                            <td><input id="age" type="number" autocomplete="off" placeholder="years" min="0"></td>
+                        </tr>
+                        <tr>
+                            <td>Gender:</td>
+                            <td>
+                                <input type="radio" name="gender" id="male">
+                                <label for="male">
+                                    Male</label>
+                                <input type="radio" name="gender" id="female">
+                                <label for="female">
+                                    Female</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Activity Level ² :</td>
+                            <td>
+                                <select name="activity" id="activity">
+                                    <option value="lvl0">
+                                        No exercise</option>
+                                    <option value="lvl1" selected="selected">
+                                        Exercise 1-3 times per week</option>
+                                    <option value="lvl2">
+                                        Exercise 3-5 times per week</option>
+                                    <option value="lvl3">
+                                        Exercise 5-6 times per week</option>
+                                    <option value="lvl4">
+                                        Exercise 6-7 times per week</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Focus on ³ :</td>
+                            <td>
+                                <input type="radio" name="focus" id="wloss">
+                                <label for="wloss">
+                                    Lose fat</label>
+                                <input type="radio" name="focus" id="mgain">
+                                <label for="mgain">
+                                    Build muscle</label>
+                            </td>
+                        </tr>
+                    </table>
+                    <div class="rscenter">
+                        <input id="buttonc" type="submit" value="Calculate">
+                    </div>
+                    <div class="rscenter">
+                        BMR (in Kcal)
+                        <p><input type="text" name="results" id="result_bmr" disabled></p>
+                    </div>
+                    <div class="rscenter">
+                        TDEE (in Kcal)
+                        <p><input type="text" name="results" id="result_tdee" disabled></p>
+                    </div>
+                    <div class="rscenter">
+                        YOUR GOAL (in Kcal)
+                        <p><input type="text" name="results" id="result_focus" disabled></p>
+                    </div>
+                    <div>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Macronutrients</th>
+                                    <th class="c2" scope="col">Grams/Day</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Proteins</td>
+                                    <td class="c2" id="prots"></td>
+                                </tr>
+                                <tr>
+                                    <td>Fat</td>
+                                    <td class="c2" id="fats"></td>
+                                </tr>
+                                <tr>
+                                    <td>Carbohydrates</td>
+                                    <td class="c2" id="carbs"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="right conatiner-fluid">
+                    <h1 class="def">Information</h1>
+                    <div class="nav-link">
+                        <a class="btn btn-primary" data-bs-toggle="collapse" href="#Kcal" role="button"
+                            aria-expanded="false" aria-controls="Kcal">
+                            Kcal
+                        </a>
+                    </div>
+                    <div class="collapse" id="Kcal">
+                        <div class="card card-body">
+                            Kilocalories are units of energy. In nutrition they quantify the energy that a food or drink
+                            provides, or the energy burned during exercise.
+                        </div>
+                    </div>
+                    <div class="nav-link">
+                        <a class="btn btn-primary" data-bs-toggle="collapse" href="#Macros" role="button"
+                            aria-expanded="false" aria-controls="Macros">
+                            Macronutrients
+                        </a>
+                    </div>
+                    <div class="collapse" id="Macros">
+                        <div class="card card-body">
+                            Macronutrients are essential nutrients that the body needs in large amounts to remain
+                            healthy.
+                            The 3 main macronutrients are Proteins, Fat, and Carbohydrates.
+                            <div>Recommended daily amounts of each:</div>
+                            <li>Proteins: 1.6 grams per body kg</li>
+                            <li>Fat: 0.8 grams per body kg</li>
+                            <li>Carbohydrates: the rest of your Kcal intake</li>
+
+                        </div>
+                    </div>
+                    <div class="nav-link">
+                        <a class="btn btn-primary" data-bs-toggle="collapse" href="#BMR" role="button"
+                            aria-expanded="false" aria-controls="BMR">
+                            BMR
+                        </a>
+                    </div>
+                    <div class="collapse" id="BMR">
+                        <div class="card card-body">
+                            Basal Metabolic Rate measures the amount of Kcal required to maintain vital body functions
+                            while at rest.
+                        </div>
+                    </div>
+                    <div class="nav-link">
+                        <a class="btn btn-primary" data-bs-toggle="collapse" href="#TDEE" role="button"
+                            aria-expanded="false" aria-controls="TDEE">
+                            TDEE
+                        </a>
+                    </div>
+                    <div class="collapse" id="TDEE">
+                        <div class="card card-body">
+                            Total Daily Energy Expenditure is calculated taking the BMR multiplied by an Activity Level, and it's
+                            an estimated number of total Kcal you need to maintain your body weight.
+                        </div>
+                    </div>
+                    <div class="nav-link">
+                        <a class="btn btn-primary" data-bs-toggle="collapse" href="#convert" role="button"
+                            aria-expanded="false" aria-controls="convert">
+                            Convert to imperial units
+                        </a>
+                    </div>
+                    <div class="collapse" id="convert">
+                        <div class="card card-body">
+                            <li>To convert weight: kilograms = pounds / 2.2</li>
+                            <li>To convert height: centimeters = inches x 2.54</li>
+                        </div>
+                    </div>
+                    <div class="nav-link">
+                        <a class="btn btn-primary" data-bs-toggle="collapse" href="#WL" role="button"
+                            aria-expanded="false" aria-controls="WL">
+                            About losing fat
+                        </a>
+                    </div>
+                    <div class="collapse" id="WL">
+                        <div class="card card-body">
+                            To lose fat you need to be in a calorie deficit, meaning that you consume less Kcal than you
+                            burn.
+                            A good starting point can be to reduce your daily Kcal intake by 300 Kcal.
+                        </div>
+                    </div>
+                    <div class="nav-link">
+                        <a class="btn btn-primary" data-bs-toggle="collapse" href="#BM" role="button"
+                            aria-expanded="false" aria-controls="BM">
+                            About building muscle
+                        </a>
+                    </div>
+                    <div class="collapse" id="BM">
+                        <div class="card card-body">
+                            Besides regular exercise, the optimal way to build muscle is to be in a calorie surplus,
+                            meaning that you consume more calories than you burn.
+                            A good starting point can be to increase your daily Kcal intake by 200 Kcal.
+                        </div>
+                    </div>
+                    <div class="nav-link">
+                        <a class="btn btn-primary" data-bs-toggle="collapse" href="#A-B" role="button"
+                            aria-expanded="false" aria-controls="A-B">
+                            About beginners
+                        </a>
+                    </div>
+                    <div class="collapse" id="A-B">
+                        <div class="card card-body">
+                            At beginner or even intermediate level, you can build muscle while being in a calorie
+                            deficit,
+                            the muscle gain may be slower but it's possible,
+                            so if your goal is just to lose fat and be fit it's a good option !
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container-fluid">
+                <table class="table-primary">
+                    <thead>
+                        <tr>
+                            <th scope="col">References</th>
+                        </tr>
+                    </thead>
+                    <tbody class="refs">
+                        <tr>
+                            <td>¹ Mifflin MD, St Jeor ST, Hill LA, Scott BJ, Daugherty SA, Koh YO. A new predictive
+                                equation for resting energy expenditure in healthy individuals. Am J Clin Nutr. 1990
+                                Feb;51(2):241-7. doi: 10.1093/ajcn/51.2.241. PMID: 2305711.</td>
+                        </tr>
+                        <tr>
+                            <td>² Harris JA, Benedict FG. A biometric study of human basal metabolism. Proc Natl Acad
+                                Sci USA 1918;4(12):370-3.</td>
+                        </tr>
+                        <tr>
+                            <td>³ Champagne CM, Broyles ST, Moran LD, Cash KC, Levy EJ, Lin PH, Batch BC, Lien LF, Funk
+                                KL, Dalcin A, Loria C, Myers VH. Dietary intakes associated with successful weight loss
+                                and maintenance during the Weight Loss Maintenance trial. J Am Diet Assoc. 2011
+                                Dec;111(12):1826-35. doi: 10.1016/j.jada.2011.09.014. PMID: 22117658; PMCID: PMC3225890.
+                                <p>Slater GJ, Dieter BP, Marsh DJ, Helms ER, Shaw G, Iraki J. Is an Energy Surplus
+                                    Required to Maximize Skeletal Muscle Hypertrophy Associated With Resistance
+                                    Training.
+                                    Front Nutr. 2019 Aug 20;6:131. doi: 10.3389/fnut.2019.00131. PMID: 31482093; PMCID:
+                                    PMC6710320.</p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="disclaim">
+                    <b>Disclaimer:</b>
+                    <p>
+                        All information and tools presented in this site are intended for informational purposes only.
+                        I am not a certified nutritionist and any nutritional information on this site should only be
+                        used as a general guideline.
+                        If you have any concerns or think you have any type of medical condition,
+                        please contact a certified nutrition specialist or other health-care professional
+                        before making changes to your diet.
+                    </p>
+                </div>
+            </div>
+        </main>
+        <footer>
+            <div id="copyright">
+                Copyright &#169;
+                2022-<script>document.write(new Date().getFullYear())</script> || Inigo Sanchez
+            </div>
+        </footer>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
